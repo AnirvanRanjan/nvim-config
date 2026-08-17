@@ -56,7 +56,9 @@ If the user asks for code or a code change: reply with the code and at most one 
 
 If the user asks a conceptual, general, or "why/how" question: give a complete, thorough explanation.
 
-Format code in Markdown code blocks with the correct language id. Do not use H1 or H2 headers.]],
+Format code in Markdown code blocks with the correct language id. Do not use H1 or H2 headers.
+
+This runs in a terminal that CANNOT render LaTeX. Never use LaTeX or math delimiters ($ ... $, $$ ... $$, \text{}, \frac{}{}, \cdot, \begin{aligned}, etc.). Write all math and equations in plain text or unicode instead — e.g. "sum(P) - sum(N) = target" and "sum(P) = (total + target) / 2".]],
         },
       },
       inline = { adapter = { name = "gemini", model = "gemini-3.6-flash" } },
