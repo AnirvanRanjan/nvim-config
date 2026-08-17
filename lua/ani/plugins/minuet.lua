@@ -22,6 +22,11 @@ return {
       -- below keeps the model loaded so requests stay fast.)
       request_timeout = 5,
       notify = "warn",
+      -- Strip completion text that duplicates what's already after the cursor —
+      -- e.g. the closing bracket nvim-autopairs auto-inserts for you. FIM models
+      -- disable this by default (0); a positive value re-enables the dedup so you
+      -- don't get doubled `)`, `]`, `}` or quotes.
+      after_cursor_filter_length = 15,
       provider_options = {
         openai_fim_compatible = {
           -- Ollama ignores the key, but the field must be a valid env var name.
