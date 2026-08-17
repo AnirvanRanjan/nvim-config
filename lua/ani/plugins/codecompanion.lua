@@ -43,11 +43,12 @@ return {
       },
     },
     interactions = {
-      -- Everything runs on qwen2.5-coder:3b now (the adapter default above).
-      -- Chat keeps a terse system prompt so answers don't get padded:
-      -- code asks -> code, general asks -> full answer.
+      -- Chat + inline now use Google Gemini (free tier: Gemini 3 Flash).
+      -- The built-in "gemini" adapter reads the API key from the GEMINI_API_KEY
+      -- environment variable — the key is NEVER stored in this file (this repo is
+      -- public on GitHub). Set it in your shell instead:  export GEMINI_API_KEY=...
       chat = {
-        adapter = "ollama",
+        adapter = { name = "gemini", model = "gemini-3.6-flash" },
         opts = {
           system_prompt = [[You are a coding assistant inside Neovim. Be direct and skip filler — no restating the question, no "Certainly!", no summaries of what you just did.
 
@@ -58,7 +59,8 @@ If the user asks a conceptual, general, or "why/how" question: give a complete, 
 Format code in Markdown code blocks with the correct language id. Do not use H1 or H2 headers.]],
         },
       },
-      inline = { adapter = "ollama" },
+      inline = { adapter = { name = "gemini", model = "gemini-3.6-flash" } },
+      -- Command generation stays local (offline fallback, no quota use).
       cmd = { adapter = "ollama" },
     },
     opts = {
