@@ -1,0 +1,16 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Neovim local artifacts (plugins live in stdpath('data'), not here)
+spell/
+tags
+session/
+.session*
+shada/
+*.shada
+
+# Keep lazy-lock.json committed for reproducible plugin versions.
